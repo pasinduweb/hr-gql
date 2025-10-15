@@ -1,0 +1,42 @@
+[
+    {
+        "id": "1",
+        "firstName": "Kamal",
+        "lastName": "Perera",
+        "designation": "Software Engineer",
+        "department": "IT",
+        "nearestCity": "Colombo"
+    },
+    {
+        "id": "2",
+        "firstName": "Nisha",
+        "lastName": "Fernando",
+        "designation": "HR Manager",
+        "department": "Human Resources",
+        "nearestCity": "Kandy"
+    },
+    {
+        "id": "3",
+        "firstName": "Sunil",
+        "lastName": "Jayasinghe",
+        "designation": "QA Engineer",
+        "department": "Quality Assurance",
+        "nearestCity": "Galle"
+    },
+    {
+        "id": "4",
+        "firstName": "Anika",
+        "lastName": "De Silva",
+        "designation": "Product Manager",
+        "department": "Product",
+        "nearestCity": "Negombo"
+    },
+    {
+        "id": "5",
+        "firstName": "Ravi",
+        "lastName": "Weerasinghe",
+        "designation": "Data Analyst",
+        "department": "Analytics",
+        "nearestCity": "Jaffna"
+    }
+]
