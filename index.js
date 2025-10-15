@@ -8,7 +8,7 @@ const typeDefs = gql`
     }
     type Employee {
         id: ID!
-        firstname: String
+        firstName: String
         lastName: String
         designation: String
         department: String
@@ -16,6 +16,18 @@ const typeDefs = gql`
     }
 `;
 
-const gqlServer = new ApolloServer({ typeDefs });
+const resolvers = {
+    Query: {
+        employees: () => {
+            return [
+                {
+                    firstName: 'Kamal',
+                },
+            ];
+        },
+    },
+};
+
+const gqlServer = new ApolloServer({ typeDefs, resolvers });
 
 gqlServer.listen({ port }).then(({ url }) => console.log(`gql server running on ${url}`));
