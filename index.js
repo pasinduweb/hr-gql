@@ -12,7 +12,7 @@ const typeDefs = gql`
         firstName: String
         lastName: String
         designation: String
-        department: String
+        department: String @deprecated(reason: "company has changed the structure")
         nearestCity: String
     }
 `;
