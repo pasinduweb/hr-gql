@@ -1,7 +1,6 @@
 const { ApolloServer, gql } = require('apollo-server');
 const EmployeeService = require('./datasources/file');
-
-const port = process.env.PORT || 3005;
+const ProjectService = require('./datasources/project');
 
 const typeDefs = gql`
     type Query {
@@ -14,6 +13,8 @@ const typeDefs = gql`
             nearestCity: String
         ): [Employee]
         findEmployeeById(id: ID): Employee
+        projects: [Project]
+        findProjectById(id: ID): Project
     }
     type Employee {
         id: ID!
@@ -23,10 +24,18 @@ const typeDefs = gql`
         department: String @deprecated(reason: "company has changed the structure")
         nearestCity: String
     }
+    type Project {
+        id: ID!
+        projectName: String
+        startDate: String
+        client: String
+        employees: [Employee]
+    }
 `;
 
 const dataSources = () => ({
     employeeService: new EmployeeService(),
+    projectService: new ProjectService(),
 });
 
 const resolvers = {
@@ -41,5 +50,7 @@ const resolvers = {
 };
 
 const gqlServer = new ApolloServer({ typeDefs, resolvers, dataSources });
+
+const port = process.env.PORT || 3005;
 
 gqlServer.listen({ port }).then(({ url }) => console.log(`gql server running on ${url}`));
