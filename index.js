@@ -23,13 +23,14 @@ const typeDefs = gql`
         designation: String
         department: String @deprecated(reason: "company has changed the structure")
         nearestCity: String
+        projects: [Project]
     }
     type Project {
         id: ID!
         projectName: String
         startDate: String
         client: String
-        employees: [Employee]
+        employees: [Int]
     }
 `;
 
@@ -47,10 +48,19 @@ const resolvers = {
             return dataSources.employeeService.getEmployeeById(id);
         },
         projects: (parent, args, { dataSources }, info) => {
-            return dataSources.projectService.getProjects(args);
+            return dataSources.projectService.getProjects();
         },
         findProjectById: (parent, { id }, { dataSources }, info) => {
             return dataSources.projectService.findProjectById(id);
+        },
+    },
+    Employee: {
+        async projects(employee, args, { dataSources }, info) {
+            let projects = await dataSources.projectService.getProjects();
+            let workingProjects = projects.filter((project) => {
+                return project.employees.includes(employee.id);
+            });
+            return workingProjects;
         },
     },
 };
