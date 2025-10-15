@@ -3,12 +3,10 @@ const { RESTDataSource } = require('apollo-datasource-rest');
 class ProjectService extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = 'http//:localhost:3000';
+        this.baseURL = 'http://localhost:3000';
     }
 
-    initialize(config) {}
-
-    getProject() {
+    getProjects() {
         return this.get('/projects')
             .then((projects) => {
                 return projects;
