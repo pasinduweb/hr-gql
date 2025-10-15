@@ -5,7 +5,14 @@ const port = process.env.PORT || 3005;
 
 const typeDefs = gql`
     type Query {
-        employees: [Employee]
+        employees(
+            id: ID
+            firstName: String
+            lastName: String
+            designation: String
+            department: String
+            nearestCity: String
+        ): [Employee]
         findEmployeeById(id: ID): Employee
     }
     type Employee {
@@ -25,7 +32,7 @@ const dataSources = () => ({
 const resolvers = {
     Query: {
         employees: (parent, args, { dataSources }, info) => {
-            return dataSources.employeeService.getEmployees();
+            return dataSources.employeeService.getEmployees(args);
         },
         findEmployeeById: (parent, { id }, { dataSources }, info) => {
             return dataSources.employeeService.getEmployeeById(id);

@@ -1,5 +1,6 @@
 const employees = require('../data/employees.json');
 const { DataSource } = require('apollo-datasource');
+const _ = require('lodash');
 
 class EmployeeService extends DataSource {
     constructor() {
@@ -8,8 +9,8 @@ class EmployeeService extends DataSource {
 
     initialize(config) {}
 
-    getEmployees() {
-        return employees;
+    getEmployees(args) {
+        return _.filter(employees, args);
     }
 
     getEmployeeById(id) {
