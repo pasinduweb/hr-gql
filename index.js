@@ -1,4 +1,5 @@
 const { ApolloServer, gql } = require('apollo-server');
+const employees = require('./data/employees.json');
 
 const port = process.env.PORT || 3005;
 
@@ -19,11 +20,7 @@ const typeDefs = gql`
 const resolvers = {
     Query: {
         employees: () => {
-            return [
-                {
-                    firstName: 'Kamal',
-                },
-            ];
+            return employees;
         },
     },
 };
