@@ -46,6 +46,12 @@ const resolvers = {
         findEmployeeById: (parent, { id }, { dataSources }, info) => {
             return dataSources.employeeService.getEmployeeById(id);
         },
+        projects: (parent, args, { dataSources }, info) => {
+            return dataSources.projectService.getProjects(args);
+        },
+        findProjectById: (parent, { id }, { dataSources }, info) => {
+            return dataSources.projectService.findProjectById(id);
+        },
     },
 };
 
