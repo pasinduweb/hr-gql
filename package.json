@@ -12,6 +12,7 @@
     "license": "ISC",
     "type": "commonjs",
     "dependencies": {
+        "apollo-datasource": "^3.3.2",
         "apollo-server": "^3.13.0",
         "graphql": "^16.11.0"
     },
